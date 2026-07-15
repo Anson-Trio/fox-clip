@@ -7,7 +7,7 @@
   "icon": "icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/code-with-Anson/fox-clip.git"
+    "url": "https://github.com/Anson-Trio/fox-clip.git"
   },
   "engines": {
     "vscode": "^1.85.0"
