@@ -2,7 +2,7 @@
   "name": "fox-clip",
   "displayName": "%extension.displayName%",
   "description": "%extension.description%",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publisher": "7b6e42df-8fdd-6638-97e6-16e542fdba0d",
   "icon": "icon.png",
   "repository": {
@@ -28,8 +28,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "foxClip.copyAbsoluteWithCode",
-        "title": "%command.copyAbsoluteWithCode%",
+        "command": "foxClip.copyAbsolute",
+        "title": "%command.copyAbsolute%",
         "category": "%extension.category%"
       },
       {
@@ -38,19 +38,14 @@
         "category": "%extension.category%"
       },
       {
-        "command": "foxClip.copyAbsolute",
-        "title": "%command.copyAbsolute%",
-        "category": "%extension.category%"
-      },
-      {
-        "command": "foxClip.copyRelativeWithCode",
-        "title": "%command.copyRelativeWithCode%",
+        "command": "foxClip.copyAbsoluteWithCode",
+        "title": "%command.copyAbsoluteWithCode%",
         "category": "%extension.category%"
       }
     ],
     "keybindings": [
       {
-        "command": "foxClip.copyAbsoluteWithCode",
+        "command": "foxClip.copyAbsolute",
         "key": "ctrl+shift+c",
         "mac": "cmd+shift+c",
         "when": "editorTextFocus"
@@ -59,7 +54,7 @@
     "menus": {
       "editor/context": [
         {
-          "command": "foxClip.copyAbsoluteWithCode",
+          "command": "foxClip.copyAbsolute",
           "group": "9_cutcopypaste@89",
           "when": "editorTextFocus"
         },
@@ -70,16 +65,12 @@
       ],
       "foxClip.submenu": [
         {
-          "command": "foxClip.copyAbsolute",
+          "command": "foxClip.copyRelative",
           "group": "1_path@1"
         },
         {
-          "command": "foxClip.copyRelative",
+          "command": "foxClip.copyAbsoluteWithCode",
           "group": "1_path@2"
-        },
-        {
-          "command": "foxClip.copyRelativeWithCode",
-          "group": "1_path@3"
         }
       ]
     },

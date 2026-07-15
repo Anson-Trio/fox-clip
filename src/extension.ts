@@ -5,17 +5,14 @@ type LineFormat = "colon" | "github";
 
 export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
-    vscode.commands.registerCommand("foxClip.copyAbsoluteWithCode", () =>
-      copyPath({ absolute: true, withCode: true })
+    vscode.commands.registerCommand("foxClip.copyAbsolute", () =>
+      copyPath({ absolute: true, withCode: false })
     ),
     vscode.commands.registerCommand("foxClip.copyRelative", () =>
       copyPath({ absolute: false, withCode: false })
     ),
-    vscode.commands.registerCommand("foxClip.copyAbsolute", () =>
-      copyPath({ absolute: true, withCode: false })
-    ),
-    vscode.commands.registerCommand("foxClip.copyRelativeWithCode", () =>
-      copyPath({ absolute: false, withCode: true })
+    vscode.commands.registerCommand("foxClip.copyAbsoluteWithCode", () =>
+      copyPath({ absolute: true, withCode: true })
     )
   );
 }
