@@ -6,7 +6,7 @@
   "command.copyRelative": "相対パスと行番号をコピー",
   "command.copyAbsoluteWithCode": "絶対パスとコードをコピー",
   "submenu.more": "Fox Clip その他…",
-  "config.lineFormat.description": "行番号の形式：colon（file.ts:10-20）または github（file.ts#L10-L20）。",
+  "config.lineFormat.description": "行番号の形式：github（デフォルト、\"file: パス; line: L10-L20\"）または colon（\"file: パス; line: 10-20\"）。",
   "config.includeCodeFence.description": "コード付きでコピーするとき、Markdown のコードフェンスで囲むかどうか。",
   "config.showNotification.description": "コピー後にステータスバーへ通知を表示するかどうか。"
 }

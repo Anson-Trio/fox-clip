@@ -6,7 +6,7 @@
   "command.copyRelative": "复制相对路径与行号",
   "command.copyAbsoluteWithCode": "复制绝对路径与代码",
   "submenu.more": "Fox Clip 更多…",
-  "config.lineFormat.description": "行号格式：colon（file.ts:10-20）或 github（file.ts#L10-L20）。",
+  "config.lineFormat.description": "行号格式：github（默认，\"file: 路径; line: L10-L20\"）或 colon（\"file: 路径; line: 10-20\"）。",
   "config.includeCodeFence.description": "复制代码时是否使用 Markdown 代码块包裹。",
   "config.showNotification.description": "复制后是否在状态栏显示提示。"
 }

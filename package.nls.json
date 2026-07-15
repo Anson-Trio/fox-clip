@@ -6,7 +6,7 @@
   "command.copyRelative": "Copy Relative Path with Lines",
   "command.copyAbsoluteWithCode": "Copy Absolute Path with Code",
   "submenu.more": "Fox Clip More…",
-  "config.lineFormat.description": "Line range format: colon (file.ts:10-20) or github (file.ts#L10-L20).",
+  "config.lineFormat.description": "Line range format: github (\"file: path; line: L10-L20\", default) or colon (\"file: path; line: 10-20\").",
   "config.includeCodeFence.description": "When copying with code, wrap the snippet in a markdown code fence.",
   "config.showNotification.description": "Show a brief status bar message after copying."
 }

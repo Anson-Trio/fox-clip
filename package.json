@@ -2,7 +2,7 @@
   "name": "fox-clip",
   "displayName": "%extension.displayName%",
   "description": "%extension.description%",
-  "version": "0.2.5",
+  "version": "0.2.8",
   "publisher": "Anson-Trio",
   "icon": "icon.png",
   "repository": {
@@ -89,7 +89,7 @@
             "colon",
             "github"
           ],
-          "default": "colon",
+          "default": "github",
           "description": "%config.lineFormat.description%"
         },
         "foxClip.includeCodeFence": {

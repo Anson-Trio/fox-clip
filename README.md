@@ -20,15 +20,15 @@ VS Code extension: copy **file path + line range** to the clipboard in one click
 
 | 命令 | 默认快捷键 | 输出示例 |
 |------|------------|----------|
-| **复制绝对路径与行号**（右键 / 快捷键） | `Ctrl+Shift+C` / `Cmd+Shift+C` | `/home/you/proj/src/app.ts:12-28` |
-| 复制相对路径与行号 | — | `src/app.ts:12-28` |
-| 复制绝对路径与代码 | — | 绝对路径:行号 + Markdown 代码块 |
+| **复制绝对路径与行号**（右键 / 快捷键） | `Ctrl+Shift+C` / `Cmd+Shift+C` | `"file: /home/you/proj/src/app.ts; line: L12-L28"` |
+| 复制相对路径与行号 | — | `"file: src/app.ts; line: L12-L28"` |
+| 复制绝对路径与代码 | — | `"file: …; line: L…"` + Markdown 代码块 |
 
 也支持：
 
 - 多光标 / 多选区（自动合并相邻行号）
 - 编辑器右键：**复制绝对路径与行号**（一级菜单）；**Fox Clip 更多…** 里可选相对路径或带代码
-- 设置里切换 `colon`（`file:10-20`）或 `github`（`file#L10-L20`）格式
+- 设置里切换 `github`（默认，`line: L10-L20`）或 `colon`（`line: 10-20`）格式
 
 ## 本地开发
 
@@ -46,18 +46,18 @@ npm run compile
 ```bash
 npm install
 npx vsce package
-code --install-extension fox-clip-0.2.5.vsix
+code --install-extension fox-clip-0.2.8.vsix
 ```
 
 Cursor 可用：
 
 ```bash
-cursor --install-extension fox-clip-0.2.5.vsix
+cursor --install-extension fox-clip-0.2.8.vsix
 ```
 
 ## 设置
 
-- `foxClip.lineFormat`：`colon`（默认）或 `github`
+- `foxClip.lineFormat`：`github`（默认，`line: L10-L20`）或 `colon`（`line: 10-20`）
 - `foxClip.includeCodeFence`：带代码复制时是否包 Markdown fence（默认 `true`）
 - `foxClip.showNotification`：复制后是否在状态栏提示（默认 `true`）
 

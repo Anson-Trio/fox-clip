@@ -38,7 +38,7 @@ async function copyPath(options: {
   }
 
   const config = vscode.workspace.getConfiguration("foxClip");
-  const lineFormat = config.get<LineFormat>("lineFormat", "colon");
+  const lineFormat = config.get<LineFormat>("lineFormat", "github");
   const includeCodeFence = config.get<boolean>("includeCodeFence", true);
   const showNotification = config.get<boolean>("showNotification", true);
 
@@ -46,8 +46,11 @@ async function copyPath(options: {
     ? document.uri.fsPath
     : toWorkspaceRelativePath(document.uri);
 
-  const lineSuffix = formatLineRanges(editor.selections, lineFormat);
-  const reference = `${normalizePathSeparators(filePath)}${lineSuffix}`;
+  const linePart = formatLineRanges(editor.selections, lineFormat);
+  const reference = formatReference(
+    normalizePathSeparators(filePath),
+    linePart
+  );
 
   let clipboardText = reference;
   if (options.withCode) {
@@ -88,8 +91,16 @@ function normalizePathSeparators(filePath: string): string {
   return filePath.split(path.sep).join("/");
 }
 
+/** e.g. "file: /path/to/file.ts; line: L12-L28" */
+function formatReference(filePath: string, linePart: string): string {
+  const body = linePart
+    ? `file: ${filePath}; line: ${linePart}`
+    : `file: ${filePath}`;
+  return `"${body.replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
+}
+
 /**
- * Build a compact line suffix from one or more selections.
+ * Build line range text from one or more selections.
  * Empty selection → current cursor line.
  * Selection ending at column 0 of next line → treat as previous line end.
  */
@@ -107,22 +118,16 @@ function formatLineRanges(
   }
 
   if (format === "github") {
-    return (
-      "#" +
-      merged
-        .map(({ start, end }) =>
-          start === end ? `L${start}` : `L${start}-L${end}`
-        )
-        .join(",")
-    );
+    return merged
+      .map(({ start, end }) =>
+        start === end ? `L${start}` : `L${start}-L${end}`
+      )
+      .join(",");
   }
 
-  return (
-    ":" +
-    merged
-      .map(({ start, end }) => (start === end ? `${start}` : `${start}-${end}`))
-      .join(",")
-  );
+  return merged
+    .map(({ start, end }) => (start === end ? `${start}` : `${start}-${end}`))
+    .join(",");
 }
 
 function selectionToInclusiveRange(selection: vscode.Selection): {
