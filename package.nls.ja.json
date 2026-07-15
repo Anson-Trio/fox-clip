@@ -1,0 +1,13 @@
+{
+  "extension.displayName": "Fox Clip",
+  "extension.description": "ファイルパスと選択行範囲をクリップボードにコピーします。",
+  "extension.category": "Fox Clip",
+  "command.copyAbsoluteWithCode": "絶対パスとコードをコピー",
+  "command.copyRelative": "相対パスと行番号をコピー",
+  "command.copyAbsolute": "絶対パスと行番号をコピー",
+  "command.copyRelativeWithCode": "相対パスとコードをコピー",
+  "submenu.more": "Fox Clip その他…",
+  "config.lineFormat.description": "行番号の形式：colon（file.ts:10-20）または github（file.ts#L10-L20）。",
+  "config.includeCodeFence.description": "コード付きでコピーするとき、Markdown のコードフェンスで囲むかどうか。",
+  "config.showNotification.description": "コピー後にステータスバーへ通知を表示するかどうか。"
+}

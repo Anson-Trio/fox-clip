@@ -1,0 +1,13 @@
+{
+  "extension.displayName": "Fox Clip",
+  "extension.description": "Copy file path with selected line range to the clipboard.",
+  "extension.category": "Fox Clip",
+  "command.copyAbsoluteWithCode": "Copy Absolute Path with Code",
+  "command.copyRelative": "Copy Relative Path with Lines",
+  "command.copyAbsolute": "Copy Absolute Path with Lines",
+  "command.copyRelativeWithCode": "Copy Relative Path with Code",
+  "submenu.more": "Fox Clip More…",
+  "config.lineFormat.description": "Line range format: colon (file.ts:10-20) or github (file.ts#L10-L20).",
+  "config.includeCodeFence.description": "When copying with code, wrap the snippet in a markdown code fence.",
+  "config.showNotification.description": "Show a brief status bar message after copying."
+}

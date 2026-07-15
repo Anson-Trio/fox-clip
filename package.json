@@ -1,0 +1,130 @@
+{
+  "name": "fox-clip",
+  "displayName": "%extension.displayName%",
+  "description": "%extension.description%",
+  "version": "0.2.1",
+  "publisher": "7b6e42df-8fdd-6638-97e6-16e542fdba0d",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/code-with-Anson/fox-clip.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "copy",
+    "path",
+    "line",
+    "reference",
+    "clipboard"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "l10n": "./l10n",
+  "contributes": {
+    "commands": [
+      {
+        "command": "foxClip.copyAbsoluteWithCode",
+        "title": "%command.copyAbsoluteWithCode%",
+        "category": "%extension.category%"
+      },
+      {
+        "command": "foxClip.copyRelative",
+        "title": "%command.copyRelative%",
+        "category": "%extension.category%"
+      },
+      {
+        "command": "foxClip.copyAbsolute",
+        "title": "%command.copyAbsolute%",
+        "category": "%extension.category%"
+      },
+      {
+        "command": "foxClip.copyRelativeWithCode",
+        "title": "%command.copyRelativeWithCode%",
+        "category": "%extension.category%"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "foxClip.copyAbsoluteWithCode",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "foxClip.copyAbsoluteWithCode",
+          "group": "9_cutcopypaste@89",
+          "when": "editorTextFocus"
+        },
+        {
+          "submenu": "foxClip.submenu",
+          "group": "9_cutcopypaste@90"
+        }
+      ],
+      "foxClip.submenu": [
+        {
+          "command": "foxClip.copyAbsolute",
+          "group": "1_path@1"
+        },
+        {
+          "command": "foxClip.copyRelative",
+          "group": "1_path@2"
+        },
+        {
+          "command": "foxClip.copyRelativeWithCode",
+          "group": "1_path@3"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "foxClip.submenu",
+        "label": "%submenu.more%"
+      }
+    ],
+    "configuration": {
+      "title": "%extension.displayName%",
+      "properties": {
+        "foxClip.lineFormat": {
+          "type": "string",
+          "enum": [
+            "colon",
+            "github"
+          ],
+          "default": "colon",
+          "description": "%config.lineFormat.description%"
+        },
+        "foxClip.includeCodeFence": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.includeCodeFence.description%"
+        },
+        "foxClip.showNotification": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.showNotification.description%"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "deploy": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.0",
+    "typescript": "^5.5.0"
+  }
+}

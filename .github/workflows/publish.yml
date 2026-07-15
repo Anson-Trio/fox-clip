@@ -1,0 +1,52 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version_bump:
+        description: "Bump version before publish (skip / patch / minor / major)"
+        required: true
+        default: skip
+        type: choice
+        options:
+          - skip
+          - patch
+          - minor
+          - major
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # release 事件需要完整历史时可选；默认即可
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+      - run: npm run compile
+
+      - name: Publish to Marketplace
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: |
+          if [ -z "$VSCE_PAT" ]; then
+            echo "缺少 Secrets.VSCE_PAT，请在仓库 Settings → Secrets 中配置。"
+            exit 1
+          fi
+
+          BUMP="${{ github.event.inputs.version_bump }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "$BUMP" != "skip" ]; then
+            npx vsce publish "$BUMP"
+          else
+            npx vsce publish
+          fi
