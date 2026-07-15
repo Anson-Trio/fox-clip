@@ -1,6 +1,11 @@
 # Fox Clip
 
+**Fox Clip（狐狸夹子）**：一只可爱的小狐狸把代码片段叼回来——一键复制文件路径与行号。
+
 VS Code extension: copy **file path + line range** to the clipboard in one click.
+
+- 本仓库：https://github.com/Anson-Trio/fox-clip  
+- 作者主页：https://github.com/Anson-Trio  
 
 支持语言 / Languages: English · 简体中文 · 繁體中文 · 日本語  
 （跟随 VS Code / Cursor 的显示语言自动切换）
