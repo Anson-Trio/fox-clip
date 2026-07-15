@@ -1,5 +1,9 @@
 # Fox Clip
 
+<p align="center">
+  <img src="media/fox-clip.png" alt="Fox Clip" width="320" />
+</p>
+
 **Fox Clip（狐狸夹子）**：一只可爱的小狐狸把代码片段叼回来——一键复制文件路径与行号。
 
 VS Code extension: copy **file path + line range** to the clipboard in one click.
@@ -42,13 +46,13 @@ npm run compile
 ```bash
 npm install
 npx vsce package
-code --install-extension fox-clip-0.2.4.vsix
+code --install-extension fox-clip-0.2.5.vsix
 ```
 
 Cursor 可用：
 
 ```bash
-cursor --install-extension fox-clip-0.2.4.vsix
+cursor --install-extension fox-clip-0.2.5.vsix
 ```
 
 ## 设置
