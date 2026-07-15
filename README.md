@@ -37,13 +37,13 @@ npm run compile
 ```bash
 npm install
 npx vsce package
-code --install-extension fox-clip-0.2.2.vsix
+code --install-extension fox-clip-0.2.3.vsix
 ```
 
 Cursor 可用：
 
 ```bash
-cursor --install-extension fox-clip-0.2.2.vsix
+cursor --install-extension fox-clip-0.2.3.vsix
 ```
 
 ## 设置

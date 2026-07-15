@@ -2,8 +2,8 @@
   "name": "fox-clip",
   "displayName": "%extension.displayName%",
   "description": "%extension.description%",
-  "version": "0.2.2",
-  "publisher": "7b6e42df-8fdd-6638-97e6-16e542fdba0d",
+  "version": "0.2.3",
+  "publisher": "Anson-Trio",
   "icon": "icon.png",
   "repository": {
     "type": "git",
