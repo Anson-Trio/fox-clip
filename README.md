@@ -57,8 +57,5 @@ cursor --install-extension fox-clip-0.2.1.vsix
 
 详见 [PUBLISH.md](./PUBLISH.md)。
 
-简要：
-
-1. 确认 `package.json` 的 `publisher` = Marketplace Unique ID
-2. 仓库 Secrets 配置 `VSCE_PAT`
-3. 发 GitHub Release，或手动跑 **Publish** workflow
+- **GitHub**：打 `v*` tag 或发 Release → 自动打包 `.vsix` 并挂到 Release
+- **商店**：从 Release 下载 `.vsix`，到 [Marketplace 管理页](https://marketplace.visualstudio.com/manage) 手动上传

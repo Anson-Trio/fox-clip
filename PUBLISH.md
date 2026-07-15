@@ -1,46 +1,40 @@
-# 发布到 VS Code Marketplace 说明
+# 发版说明
 
-## 1. 确认 publisher
+商店（VS Code Marketplace）用**手动上传**；GitHub 负责自动打 `.vsix` 并挂到 Release。
 
-打开 [Marketplace 管理页](https://marketplace.visualstudio.com/manage)，看你的 **Publisher Unique ID**。
+## GitHub：自动出包
 
-`package.json` 里的 `"publisher"` 必须和这个 Unique ID **完全一致**。
-
-> 注意：Unique ID 一般是短名字（如 `anson`），不是 Azure 组织的 UUID。  
-> 若当前填的是一长串 GUID，请改成管理页上显示的那个 Unique ID。
-
-## 2. 创建 Azure DevOps PAT
-
-1. 打开 [Azure DevOps](https://dev.azure.com/)（用同一 Microsoft 账号）
-2. 右上角头像 → **Personal access tokens** → **New Token**
-3. Organization 选 **All accessible organizations**（或你的组织）
-4. Scopes：**Marketplace** →勾选 **Manage**
-5. 创建后复制 token（只显示一次）
-
-## 3. 配到 GitHub Secrets
-
-仓库 → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**
-
-- Name: `VSCE_PAT`
-- Value: 刚才的 PAT
-
-## 4. 怎么触发发布
-
-**推荐：打 GitHub Release**
-
-1. 本地或在 GitHub 上把 `package.json` 的 `version` 改成新版本（如 `0.2.2`）并推到 `main`
-2. GitHub → **Releases** → **Draft a new release**
-3. Tag 例如 `v0.2.2`，发布 Release
-4. `Publish` workflow 会自动 `vsce publish`
-
-**或：手动跑 Actions**
-
-- Actions → **Publish** → **Run workflow**
-- 可选 patch / minor / major 自动升版本再发布
-
-## 5. 首次也可本地试发
+1. 把 `package.json` 里的 `version` 改成新版本（例如 `0.2.2`），提交并推到 `main`
+2. 打 tag 并推送：
 
 ```bash
-npx vsce login <你的publisher-id>
-npx vsce publish
+git tag v0.2.2
+git push origin v0.2.2
 ```
+
+或在 GitHub → **Releases** → **Draft a new release**，填 tag（如 `v0.2.2`）后发布。
+
+3. **Release** workflow 会：
+   - 编译
+   - `vsce package` 生成 `fox-clip-x.y.z.vsix`
+   - 把 `.vsix` 挂到该 Release 的 Assets 里
+
+下载地址在仓库的 Releases 页面。
+
+## Marketplace：手动上架 / 更新
+
+1. 从 GitHub Release 下载 `.vsix`
+2. 打开 [Marketplace 管理页](https://marketplace.visualstudio.com/manage)
+3. 选中你的 publisher → 上传 / 更新扩展
+
+确认 `package.json` 的 `"publisher"` 与管理页 **Unique ID** 一致。
+
+## 本地打包（可选）
+
+```bash
+npm ci
+npm run compile
+npx vsce package
+```
+
+生成的 `.vsix` 同样可以拖到管理页上传。
